@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>GreenBear.com\About Us</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<style>
+.navbar-brand img {
+  height: 45px;
+  width: auto;
+}
+.navbar-brand {
+  padding: 2px 10px;
+}
+
+footer, footer * {
+  background-color: #f8f8f8 !important;  /* light gray background */
+  color: #000 !important;                /* black text */
+}
+
+#copyright {
+  background-color: #f8f8f8 !important;
+  color: #000 !important;
+}
+
+
+ :root {
+      --bg-color: #ffffff;
+      --text-color: #000000;
+      --header-bg: #f0f0f0;
+    }
+
+    body.light-theme {
+      --bg-color: #ffffff;
+      --text-color: #000000;
+      --header-bg: #f0f0f0;
+    }
+
+    body.dark-theme {
+      --bg-color: #121212;
+      --text-color: #f0f0f0;
+      --header-bg: #1e1e1e;
+    }
+
+    body {
+      
+      
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s, color 0.3s;
+     
+      
+      
+    }
+
+
+
+    #themeToggle {
+      
+      background: #888;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    
+.up-arrow {
+  position: fixed;       /* stays visible while scrolling */
+  bottom: 50px;          /* distance from bottom */
+  right: 20px;           /* distance from right */
+  z-index: 1000;         /* keep above other elements */
+  text-decoration: none;
+}
+
+.up-arrow i {
+  font-size: 40px;       /* size of the circle icon */
+  color: #007bff;        /* icon color */
+  transition: color 0.3s, transform 0.3s;
+}
+
+.up-arrow i:hover {
+  color: #0056b3;        /* darker hover color */
+  transform: scale(1.1); /* subtle hover effect */
+}
+
+
+
+ .page-button {
+      display: inline-block;
+      padding: 8px 16px;
+      margin: 4px;
+      text-decoration: none; /* remove underline */
+      background-color: #e7e7e7; /* light gray */
+      color: black;             /* text color */
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      transition: background-color 0.2s;
+    }
+
+    .page-button:hover {
+      background-color: #d4d4d4;
+    }
+
+    .page-button:visited {
+      color: purple; /* visited link turns purple */
+    }
+	
+	
+	
+	
+.pagination li.disabled a {
+  pointer-events: none;  /* Prevent clicking */
+  color: gray;           /* Gray out */
+  text-decoration: none; /* Remove underline */
+  cursor: default;       /* Show default cursor */
+}
+
+
+
+	
+	
+	    .pagination a {
+      text-decoration: underline;
+      color: blue;
+    }
+
+    .pagination a:visited {
+      color: purple;
+    }
+
+    .pagination > .active > a {
+      background-color: #337ab7;
+      color: white !important;
+      border-color: #337ab7;
+    }
+</style>
+
+
+<body id="top" class="light-theme">
+
+<div class="container">
+
+    
+
+  
+	
+  <nav class="navbar navbar-default">
+    
+      
+      <!-- Navbar Header -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+        <a class="navbar-brand" href="index.html" data-toggle="tooltip" title="greenbear.com"><img src="images/logo.jpg" alt="Logo"></a>
+      </div>
+
+      <!-- ✅ Collapsible Content -->
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav nav-tabs navbar-left">
+         <li class="active"><a href="index.html">Home</a></li>
+         <li><a href="about_us.html">About Us</a></li>
+         <li><a href="events.html">Events</a></li>
+         <li><a href="donate.html">Donate</a></li>
+		 <li><a href="contact_us.html">Contact Us</a></li>
+        </ul>
+
+        <!-- ✅ Buttons on the right -->
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <button type="button" class="btn btn-default navbar-btn btn-sm">
+              <span class="glyphicon glyphicon-user"></span> Sign Up
+            </button>
+          </li>
+          <li>
+            <button type="button" class="btn btn-default navbar-btn btn-sm">
+              <span class="glyphicon glyphicon-log-in"></span> Login
+            </button>
+          </li>
+		  <li>
+              <button id="themeToggle" class="btn btn-default navbar-btn btn-sm">🌓</button>
+         </li>
+        </ul>
+		
+      </div>
+	  
+    
+	
+  </nav>
+
+
+<div class="row" id="about_us">
+
+
+	 <section id="description">
+    <h2>Description</h2>
+    <p  style="text-indent: 30px;">
+        GreenBear is a dedicated organization committed to the protection and welfare of both people and animals. 
+      Our team is composed of passionate volunteers and professionals who work tirelessly to raise awareness, 
+      provide support, and create positive change in our communities. Through various initiatives, events, and campaigns, 
+      we aim to make a meaningful difference in the world around us.
+    </p>
+  </section>
+
+  <section id="mission">
+    <h2>Purpose / Mission</h2>
+    <p style="text-indent: 30px;">
+        Our mission is to promote environmental conservation, protect endangered species, and support local communities in need. 
+      We strive to educate the public, foster compassion, and encourage active participation in projects that improve the well-being 
+      of both humans and animals. By combining education, advocacy, and direct action, GreenBear works to build a sustainable and 
+      harmonious future for all living beings.
+    </p>
+  </section>
+
+  <section id="services">
+    <h2>Services</h2>
+    <ul>
+      <li>Educational workshops and awareness campaigns</li>
+      <li>Wildlife protection and rehabilitation</li>
+      <li>Community outreach and support programs</li>
+      <li>Fundraising events to support environmental and social causes</li>
+    </ul>
+  </section>
+
+    <section id="team">
+  <h2 class="text-center">Our Team</h2>
+  <div class="row text-center">
+
+    <!-- Member 1 -->
+    <div class="col-sm-4">
+      <div class="thumbnail">
+        <img src="images/member6.jpg" alt="Member 1" style="width:100%">
+        <div class="caption">
+          <h4>John Smith</h4>
+          <p>Founder & Director</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Member 2 -->
+    <div class="col-sm-4">
+      <div class="thumbnail">
+        <img src="images/member2.jpg" alt="Member 2" style="width:100%">
+        <div class="caption">
+          <h4>Sarah Johnson</h4>
+          <p>Wildlife Specialist</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Member 3 -->
+    <div class="col-sm-4">
+      <div class="thumbnail">
+        <img src="images/member3.jpg" alt="Member 3" style="width:100%">
+        <div class="caption">
+          <h4>Michael Brown</h4>
+          <p>Community Outreach</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Member 4 -->
+    <div class="col-sm-4">
+      <div class="thumbnail">
+        <img src="images/member4.jpg" alt="Member 4" style="width:100%">
+        <div class="caption">
+          <h4>Emily Davis</h4>
+          <p>Education Coordinator</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Member 5 -->
+    <div class="col-sm-4">
+      <div class="thumbnail">
+        <img src="images/member5.jpg" alt="Member 5" style="width:100%">
+        <div class="caption">
+          <h4>David Wilson</h4>
+          <p>Conservation Expert</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Member 6 -->
+    <div class="col-sm-4">
+      <div class="thumbnail">
+        <img src="images/member1.jpg" alt="Member 6" style="width:100%">
+        <div class="caption">
+          <h4>Linda Martinez</h4>
+          <p>Volunteer Coordinator</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+    
+
+    
+
+</div>
+
+ 
+  <hr>
+<div class="container text-center">
+    <ul class="pagination">
+	<li><a href="#">Previous</a></li>
+	
+  
+    <li><a href="index.html">1</a></li>
+    <li><a href="about_us.html">2</a></li>
+    <li><a href="events.html">3</a></li>
+    <li><a href="donate.html">4</a></li>
+    <li><a href="contact_us.html">5</a></li>
+	<li><a href="#">Next</a></li>
+  </ul>
+  </div>
+<script>
+$(document).ready(function(){
+  // Get current page filename and decode spaces
+  var currentPage = decodeURIComponent(location.pathname.split("/").slice(-1)[0]);
+
+  // Select all numbered pagination links (exclude Previous/Next)
+  var pages = $(".pagination li a").not(':contains("Previous"), :contains("Next")');
+
+  pages.each(function(index){
+    var linkPage = $(this).attr("href");
+
+    if(linkPage === currentPage){
+      $(this).parent().addClass("active");
+
+      // Previous
+      if(index > 0){
+        $(".pagination li a:contains('Previous')").attr("href", $(pages[index-1]).attr("href"));
+        $(".pagination li a:contains('Previous')").parent().removeClass("disabled");
+      } else {
+        $(".pagination li a:contains('Previous')").attr("href", "#");
+        $(".pagination li a:contains('Previous')").parent().addClass("disabled");
+      }
+
+      // Next
+      if(index < pages.length - 1){
+        $(".pagination li a:contains('Next')").attr("href", $(pages[index+1]).attr("href"));
+        $(".pagination li a:contains('Next')").parent().removeClass("disabled");
+      } else {
+        $(".pagination li a:contains('Next')").attr("href", "#");
+        $(".pagination li a:contains('Next')").parent().addClass("disabled");
+      }
+    }
+  });
+});
+
+</script>
+
+
+  
+
+
+  
+
+  
+  <hr>
+    <footer>
+  <div id="copyright" >
+<div class="row">
+    <div class="col-sm-3">
+	 <p><b>For Us</b></p>
+	 <a href="index.html">Home</a><br>
+	 <a href="about_us.html">About Us</a><br>
+	 <a href="events.html">Events</a><br>
+	 <a href="contact_us">Contact Us</a>
+
+	
+	</div>
+	
+    <div class="col-sm-3">
+	
+	 <p><b>Information</b></p>
+	 <a href="contact_us.html">Contact Us</a><br>
+	 <a href="Terms_of_Use.html">Terms Of Use</a><br>
+	 <a href="GDPR.html">GDPR</a><br>
+     <a href="cookies.html">Cookies Policy</a>
+	
+	</div>
+	
+
+
+
+	<div class="col-sm-3">
+	  <p><b>Contact Us</b></p>
+	  <p><span class="glyphicon glyphicon-map-marker"></span> KSANTHI, GREECE</p>
+      <p><span class="glyphicon glyphicon-phone"></span> PHONE: +00 1111111111</p>
+	  <p><span class="glyphicon glyphicon-envelope"></span> EMAIL: info@mywebsite.com</p></div>
+	   <div class="col-sm-3">
+    <p><b>Social Networks</b></p>
+    <div class="d-flex justify-content-center">
+        <a href="https://facebook.com" target="_blank" class="me-2">
+            <i class="fa fa-3x fa-facebook"></i>
+        </a>
+        <a href="https://twitter.com" target="_blank" class="me-2">
+            <i class="fa fa-3x fa-twitter"></i>
+        </a>
+        <a href="https://linkedin.com" target="_blank" class="me-2">
+            <i class="fa fa-3x fa-linkedin"></i>
+        </a>
+        <a href="https://instagram.com" target="_blank">
+            <i class="fa fa-3x fa-instagram"></i>
+        </a>
+     </div>
+	 
+	  
+	<p  style="float: right; padding: 20px;">&copy; 2025 by Mike</p>
+    </div>
+</div>
+       
+
+
+      
+</div>
+
+		</footer>
+      
+</div>
+<a class="up-arrow" href="#top" data-toggle="tooltip" title="TO TOP">
+  <i class="bi bi-arrow-up-circle"></i>
+</a>
+
+<script>
+$(document).ready(function(){
+  
+
+  // Smooth scrolling for any anchor links
+  $(".up-arrow").on('click', function(event) {
+    if (this.hash !== "") {
+      event.preventDefault();
+      var hash = this.hash;
+
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+        window.location.hash = hash;
+      });
+    }
+  });
+});
+</script>
+</div>
+  <script>
+$(document).ready(function(){
+    const button = document.getElementById('themeToggle');
+    const body = document.body;
+
+    // Load saved theme
+    if(localStorage.getItem('theme') === 'dark'){
+        body.classList.remove('light-theme');
+        body.classList.add('dark-theme');
+    }
+
+    button.addEventListener('click', () => {
+        const isLight = body.classList.contains('light-theme');
+        body.classList.toggle('light-theme', !isLight);
+        body.classList.toggle('dark-theme', isLight);
+
+        localStorage.setItem('theme', isLight ? 'dark' : 'light');
+    });
+});
+</script>
+
+</body>
+</html>
