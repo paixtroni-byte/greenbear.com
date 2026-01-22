@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head> 
+    <meta charset="UTF-8">
+    <title>social buttons</title>
+<style>
+*{font-family:"Roboto", sans-serif;
+padding:0;
+margin:0;
+box-sizing: border-box;
+ }
+ body{
+ background: #ccc;
+ }   
+ 
+ul {
+position: absolute;
+top:50%;
+left:50%;
+transform: translate(-50%,-50%);
+display: flex;
+margin:0;
+padding:0;
+}
+
+ul li {
+list-style:none;
+margin: 0 5px;
+}
+
+ul li a .fa-brands{
+font-size:40px;
+color:#262626;
+line-height:80px;
+transition:0.5s;
+padding-right:14px;
+
+}
+ul li span{
+padding:0;
+margin:0;
+position:absolute;
+top:30px;
+letter-spacing:4px;
+transition:0.5s;
+}
+
+ul li a{
+text-decoration:none;
+display:absolute;
+display:block;
+width:210px;
+height:80px;
+background:#fff;
+/*padding-left:20px; an thelw to energopoiw*/
+text-align:center;
+padding-top: 30px; /*fernw tous titlous sti mesi tou koutiou*/
+transform:rotate(-30deg) skew(25deg) translate(0,0);
+transition:0.5s;
+box-shadow:-20px 20px 10px rgba(0,0,0,0.5);
+}
+
+ul li a::before{
+content:'';
+position:absolute;
+top:10px;
+left:-20px;
+height:100%;
+width:20px;
+background-color:#b1b1b1;
+transform:0.5s;
+transform:rotate(0deg) skewY(-45deg);
+}
+
+ul li a::after{
+content:'';
+position:absolute;
+bottom:-20px;
+left:-10px;
+height:20px;
+width:100%;
+background:#b1b1b1;
+transform:0.5s;
+transform:rotate(0deg) skewX(-45deg);
+}
+ul li a:hover{
+transform:rotate(-30deg) skew(25deg) translate(20px,-15px);
+box-shadow -50px 50px 50px rgba(0,0,0,0.5);
+}
+
+ ul li:hover .fa-brands{
+ color:#fff;
+ }
+ 
+ul li:hover:nth-child(1) a{
+background:rgba(58, 38, 227, 0.96);
+}
+
+ul li:hover:nth-child(1) a::before{
+background:#707bf3;
+}
+
+ul li:hover:nth-child(1) a::after{
+background:#707bf3;
+}
+    
+ul li:hover:nth-child(2) a{
+background:#5c5052;
+}
+
+ul li:hover:nth-child(2) a::before{
+background:#aca3a3;
+}
+
+ul li:hover:nth-child(2) a::after{
+background:#c1bbbc;
+}    
+    
+
+ul li:hover:nth-child(3) a{
+background:#d81c3f;
+}
+
+ul li:hover:nth-child(3) a::before{
+background:#e4405f ;
+}
+
+ul li:hover:nth-child(3) a::after{
+background:#e46880;
+}
+
+ 
+</style>
+</head>
+<body>
+
+ 
+ 
+    
+<div>   
+<ul>
+  <li><a>facebook</a></li>
+  <li><a>X</a></li>
+  <li><a>instagram</a></li>
+</ul>    
+    </div>
+    
+  
+
+
+</body>
+</html>

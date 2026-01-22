@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRT-style Background</title>
+<style>
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* CRT-style vignette background */
+body {
+    background: radial-gradient(circle at center, 
+        #0f6c0f 0%,   /* bright green in the center */
+        #0b3d0b 40%,  /* darker green mid */
+        #000000 100%  /* black edges */
+    );
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+</style>
+</head>
+<body>
+</body>
+</html>

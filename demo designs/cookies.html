@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>My Website</title>
+
+<style>
+/* ------- COOKIE BANNER STYLE ------- */
+#cookie-banner {
+  position: fixed;
+  bottom: -400px;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border-top: 2px solid #ddd;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  transition: bottom 0.5s ease;
+  z-index: 9999;
+}
+
+#cookie-banner.show {
+  bottom: 0;
+}
+
+#cookie-banner h3 {
+  margin: 0 0 10px 0;
+  font-size: 20px;
+}
+
+#cookie-banner p {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.4;
+}
+
+.cookie-buttons {
+  margin-top: 15px;
+}
+
+.cookie-buttons button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+.accept-btn {
+  background: #28a745;
+  color: white;
+}
+
+.reject-btn {
+  background: #dc3545;
+  color: white;
+}
+
+.settings-btn {
+  background: #007bff;
+  color: white;
+}
+
+/* ------- COOKIE SETTINGS POPUP ------- */
+#cookie-settings {
+  position: fixed;
+  bottom: -400px;
+  left: 0;
+  width: 100%;
+  background: #fafafa;
+  border-top: 2px solid #ccc;
+  padding: 20px;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+  transition: bottom 0.5s ease;
+  z-index: 9999;
+}
+
+#cookie-settings.show {
+  bottom: 0;
+}
+
+.settings-section h4 {
+  margin: 10px 0 5px;
+}
+
+.settings-section label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.save-settings-btn {
+  background: #28a745;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+
+/* Toggle switches */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 38px;
+  height: 20px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: #ccc;
+  border-radius: 20px;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #28a745;
+}
+
+input:checked + .slider:before {
+  transform: translateX(18px);
+}
+</style>
+
+</head>
+<body>
+
+<h1>Welcome to My Website</h1>
+<p>Your normal page content goes here...</p>
+
+<!-- ========== COOKIE BANNER ========== -->
+<div id="cookie-banner">
+  <h3>We use cookies</h3>
+  <p>
+    We use cookies to improve your experience. You can accept all, reject all, or customize your preferences.
+  </p>
+
+  <div class="cookie-buttons">
+    <button class="accept-btn" onclick="acceptAllCookies()">Accept All</button>
+    <button class="reject-btn" onclick="rejectAllCookies()">Reject All</button>
+    <button class="settings-btn" onclick="openSettings()">Settings</button>
+  </div>
+</div>
+
+<!-- ========== COOKIE SETTINGS PANEL ========== -->
+<div id="cookie-settings">
+  <h3>Cookie Preferences</h3>
+
+  <div class="settings-section">
+    <h4>Essential Cookies</h4>
+    <p>Required for website functionality.</p>
+    <label>
+      <strong>Always Enabled</strong>
+    </label>
+  </div>
+
+  <div class="settings-section">
+    <h4>Analytics Cookies</h4>
+    <label class="switch">
+      <input type="checkbox" id="analytics-toggle">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <div class="settings-section">
+    <H4>Marketing Cookies</h4>
+    <label class="switch">
+      <input type="checkbox" id="marketing-toggle">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <button class="save-settings-btn" onclick="saveSettings()">Save Settings</button>
+</div>
+
+<script>
+// ---------- SHOW BANNER ON FIRST VISIT ----------
+window.onload = function () {
+  if (!localStorage.getItem("cookie_preferences")) {
+    document.getElementById("cookie-banner").classList.add("show");
+  }
+};
+
+// ---------- ACCEPT ALL ----------
+function acceptAllCookies() {
+  const prefs = {
+    essential: true,
+    analytics: true,
+    marketing: true
+  };
+  localStorage.setItem("cookie_preferences", JSON.stringify(prefs));
+  closeAll();
+}
+
+// ---------- REJECT ALL ----------
+function rejectAllCookies() {
+  const prefs = {
+    essential: true,
+    analytics: false,
+    marketing: false
+  };
+  localStorage.setItem("cookie_preferences", JSON.stringify(prefs));
+  closeAll();
+}
+
+// ---------- OPEN SETTINGS ----------
+function openSettings() {
+  document.getElementById("cookie-banner").classList.remove("show");
+  document.getElementById("cookie-settings").classList.add("show");
+}
+
+// ---------- SAVE CUSTOM SETTINGS ----------
+function saveSettings() {
+  const prefs = {
+    essential: true,
+    analytics: document.getElementById("analytics-toggle").checked,
+    marketing: document.getElementById("marketing-toggle").checked
+  };
+
+  localStorage.setItem("cookie_preferences", JSON.stringify(prefs));
+  closeAll();
+}
+
+// ---------- CLOSE ALL BANNERS ----------
+function closeAll() {
+  document.getElementById("cookie-banner").classList.remove("show");
+  document.getElementById("cookie-settings").classList.remove("show");
+}
+</script>
+
+</body>
+</html>

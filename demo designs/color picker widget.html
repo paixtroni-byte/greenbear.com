@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>color picker widget</title>
+	<script src="color picker widget.js" defer></script>
+    <style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: #f3f4f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+.color-picker-widget {
+  width: 320px;
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  padding: 20px 24px;
+  text-align: center;
+}
+.preview {
+  width: 100%;
+  height: 120px;
+  border-radius: 8px;
+  background: #10b981;
+  margin-bottom: 16px;
+  transition: background 0s ease;
+  border: 1px solid #e5e7eb;
+}
+.hex-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 16px;
+  color: #111827;
+  cursor: pointer;
+  user-select: none;
+  margin-bottom: 14px;
+}
+.hex-box:hover {
+  background: #f3f4f6;
+}
+.hex-box small {
+  color: #6b7280;
+  font-size: 12px;
+}
+input[type="color"] {
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-radius: 6px;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+.tooltip {
+  font-size: 12px;
+  color: #10b981;
+  margin-top: 6px;
+  opacity: 0;
+  transition: opacity 0s ease;
+}
+.tooltip.show {
+  opacity: 1;
+}
+    </style>
+</head>
+<body>
+   <div class="color-picker-widget">
+  <div class="preview" id="colorPreview"></div>
+  <div class="hex-box" id="hexBox">
+    <span id="hexValue">#10b981</span>
+    <small>Click to Copy</small>
+  </div>
+  <input type="color" id="colorInput" value="#10b981">
+  <div class="tooltip" id="tooltip">Copied to clipboard </div>
+</div>
+
+</body>
+</html>
