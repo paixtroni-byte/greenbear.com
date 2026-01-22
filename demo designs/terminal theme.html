@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>terminal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#70c65e">
+<link href="https://fonts.googleapis.com/css2?family=Oxygen+Mono&display=swap" rel="stylesheet">
+
+<style>
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* CRT-style concave vignette background with reflection */
+body {
+    font-family: "Oxygen Mono", monospace;
+    font-size: 22px;
+    color: rgba(128, 255, 128, 0.8);
+    text-shadow: rgb(51, 255, 51) 0 0 1ex, rgba(255, 255, 255, 0.8) 0 0 2px;
+
+    background: 
+        radial-gradient(
+            ellipse 80% 70% at 50% 50%, 
+            #166616 0%,
+            #0b3d0b 50%,
+            #000000 100%
+        ),
+        radial-gradient(
+            ellipse 60% 40% at 30% 25%, 
+            rgba(255,255,255,0.05) 0%, 
+            transparent 70%
+        );
+    background-blend-mode: overlay;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* CRT scanlines */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.2),
+        rgba(0,0,0,0.2) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    pointer-events: none;
+    z-index: 50;
+}
+
+.terminal {
+    position: relative;
+    z-index: 10;
+    padding: 20px;
+    pointer-events: auto;
+}
+
+.output {
+    margin: 0.2em 0;
+    white-space: pre;
+}
+
+.output::before {
+    content: ">";
+    margin-right: 4px;
+}
+
+/* blinking cursor */
+.output.last::after {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 1.2em;
+    background-color: rgba(128, 255, 128, 0.8);
+    margin-left: 2px;
+    vertical-align: bottom;
+    animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    50.1%, 100% { opacity: 0; }
+}
+
+.download-btn {
+    display: inline-block;
+    color: rgba(128,255,128,0.9);
+    text-decoration: none;
+}
+
+.download-btn:hover {
+    background-color: rgba(32,128,32,0.8);
+}
+
+/* animated scan beam */
+.overlay::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image: linear-gradient(
+        0deg,
+        transparent 0%,
+        rgba(32,128,32,.2) 2%,
+        rgba(32,128,32,.8) 3%,
+        rgba(32,128,32,.2) 4%,
+        transparent 100%
+    );
+    background-repeat: no-repeat;
+    animation: scan 7.5s linear infinite;
+    z-index: 20;
+}
+
+@keyframes scan {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+/* fullscreen static */
+.noise {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;
+    opacity: 0.015;
+    background-image: url("static.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    mix-blend-mode: screen;
+}
+
+/* noise pixels */
+.pixel {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background-color: rgba(255,255,255,0.2);
+}
+</style>
+</head>
+
+<body>
+<div class="noise" id="noise"></div>
+<div class="overlay"></div>
+
+<div class="terminal">
+    <p class="output"></p>
+    <p class="output">TERMINAL.LC - ANONYMOUS FILE CACHING</p>
+    <p class="output"></p>
+    <p class="output">FETCHING FILE ID: 4MP12QWZ-WLQR5GX</p>
+    <p class="output"></p>
+
+    <!-- Scrambled lines ONLY -->
+    <p class="output scramble">YOU HAVE REQUESTED: RAVELENT-2022-02-TO-2022-09-COMPRESSED.RAR</p>
+    <p class="output scramble">FILE SIZE: 93.65MB | FIRST CACHED: 2023-11-21</p>
+    <p class="output scramble">SHA1: 6029610C738CECF900ED92B3CECEAF839A49A1FA</p>
+
+    <p class="output"></p>
+    <p class="output"><a href="#" class="download-btn">[DOWNLOAD]</a></p>
+    <p class="output last"></p>
+</div>
+
+<script>
+const chars = "!<>-_\\/[]{}—=+*^?#________";
+const typingSpeed = 40;
+const scrambleSpeed = 30;
+const linePause = 200;
+
+const lines = Array.from(document.querySelectorAll('.output'));
+
+// store original text & clear EVERYTHING immediately
+const queue = lines.map(el => ({
+    el,
+    text: el.textContent
+}));
+
+lines.forEach(el => el.textContent = "");
+
+let index = 0;
+
+/* typing effect */
+function typeText(el, text, callback) {
+    let i = 0;
+    const interval = setInterval(() => {
+        el.textContent += text[i];
+        i++;
+        if (i >= text.length) {
+            clearInterval(interval);
+            callback && callback();
+        }
+    }, typingSpeed);
+}
+
+/* scramble effect */
+function scrambleText(el, text, callback) {
+    let i = 0;
+    const interval = setInterval(() => {
+        el.textContent = text
+            .split("")
+            .map((c, idx) =>
+                idx < i ? c : chars[Math.floor(Math.random() * chars.length)]
+            )
+            .join("");
+        i += 0.5;
+        if (i >= text.length) {
+            el.textContent = text;
+            clearInterval(interval);
+            callback && callback();
+        }
+    }, scrambleSpeed);
+}
+
+function processNextLine() {
+    if (index >= queue.length) return;
+
+    const { el, text } = queue[index++];
+    
+    // move cursor
+    document.querySelectorAll('.output.last')
+        .forEach(l => l.classList.remove('last'));
+    el.classList.add('last');
+
+    // empty line
+    if (!text.trim()) {
+        setTimeout(processNextLine, linePause);
+        return;
+    }
+
+    // scrambled line
+    if (el.classList.contains('scramble')) {
+        scrambleText(el, text, () =>
+            setTimeout(processNextLine, linePause)
+        );
+    }
+    // normal typed line
+    else {
+        typeText(el, text, () =>
+            setTimeout(processNextLine, linePause)
+        );
+    }
+}
+
+// start AFTER everything is hidden
+processNextLine();
+
+/* animated static pixels */
+const noise = document.getElementById("noise");
+const pixels = [];
+const count = 900;
+
+for (let i = 0; i < count; i++) {
+    const p = document.createElement("div");
+    p.className = "pixel";
+    p.style.top = Math.random() * 100 + "vh";
+    p.style.left = Math.random() * 100 + "vw";
+    noise.appendChild(p);
+    pixels.push(p);
+}
+
+setInterval(() => {
+    pixels.forEach(p => {
+        p.style.opacity = Math.random() * 0.2;
+    });
+}, 50);
+</script>
+
+
+</body>
+</html>

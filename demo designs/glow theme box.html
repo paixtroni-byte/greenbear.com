@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>glow theme box</title>
+  <style>
+    :root {
+      --mindware-ui-accent-color: #55BBBC;
+      --mindware-ui-secondary-accent: #66F2C5;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background: #0c0f10;
+      color: #e0e0e0;
+      margin: 0;
+      padding: 2rem;
+    }
+
+    .credits-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+
+   
+
+    .supporters-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .supporter-card {
+      background: linear-gradient(
+        135deg,
+        rgba(85, 187, 188, 0.1),
+        rgba(85, 187, 188, 0.05)
+      );
+      border: 1px solid rgba(85, 187, 188, 0.3);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .supporter-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(85, 187, 188, 0.2),
+        transparent
+      );
+      transition: left 0.5s ease;
+    }
+
+    .supporter-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--mindware-ui-accent-color);
+      box-shadow: 0 4px 15px rgba(85, 187, 188, 0.2);
+    }
+
+    .supporter-card:hover::before {
+      left: 100%;
+    }
+
+    
+  </style>
+</head>
+<body>
+  <div class="credits-container">
+  
+
+      
+
+        <div class="supporters-grid">
+          <div class="supporter-card">lookformee</div>
+          <div class="supporter-card">TAIGA</div>
+          <div class="supporter-card">Lemonmasacre</div>
+          <div class="supporter-card">Sxftbol</div>
+          <div class="supporter-card">emperorfrieza</div>
+          <div class="supporter-card">secretly a plant</div>
+          <div class="supporter-card">adamdubal</div>
+          <div class="supporter-card">Bryan</div>
+          <div class="supporter-card">Mike Fox</div>
+          <div class="supporter-card">Dagl</div>
+        </div>
+      
+    
+  </div>
+</body>
+</html>
